@@ -26,7 +26,7 @@ const login = async (req, res) => {
         firstName: user.firstName,
       },
       process.env.JWT_SECRET,
-      { expiresIn: 60 * 5 }
+      { expiresIn: 60 * 60 }
     );
 
     return res
@@ -75,7 +75,7 @@ const register = async (req, res) => {
         firstName: result.firstName,
       },
       process.env.JWT_SECRET,
-      { expiresIn: 60 * 5 }
+      { expiresIn: 60 * 60 }
     );
     return res
       .status(201)
