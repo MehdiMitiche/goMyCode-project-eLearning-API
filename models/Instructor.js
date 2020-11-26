@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const instructorSchema = new Schema({
   firstName: {
     type: String,
     required: "first name is required",
@@ -24,10 +24,16 @@ const UserSchema = new Schema({
   address: {
     type: String,
   },
-  courses: [mongoose.Schema.Types.ObjectId],
-  likedCourses: [mongoose.Schema.Types.ObjectId],
-  favouriteCourses: [mongoose.Schema.Types.ObjectId],
+  description: {
+    type: String,
+  },
+  experience: {
+    type: String,
+  },
+  speciality: {
+    type: String,
+  },
 });
 
-const User = mongoose.model("user", UserSchema);
-module.exports = User;
+const Instructor = mongoose.model("instructor", instructorSchema);
+module.exports = Instructor;

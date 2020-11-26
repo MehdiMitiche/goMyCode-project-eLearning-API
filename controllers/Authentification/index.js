@@ -30,7 +30,7 @@ const login = async (req, res) => {
     );
 
     return res
-      .status(201)
+      .status(200)
       .json({ msg: "Created SuccessFully", token, data: user });
   } catch (err) {
     console.log(err.message);
@@ -39,9 +39,10 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
+  console.log("ENTRED");
   try {
     const { firstName, lastName, email, phone, password } = req.body;
-    if (!firstName || !lastName || !email || !phone || !password)
+    if (!firstName || !lastName || !email || !password)
       return res.status(400).json({ msg: "Missing Information !" });
 
     //CHECKING EXISTING USER
@@ -56,7 +57,7 @@ const register = async (req, res) => {
     newUser.firstName = firstName;
     newUser.lastName = lastName;
     newUser.email = email;
-    newUser.phone = phone;
+    if (phone) newUser.phone = phone;
 
     //HASHING THE PASSWORD
     const hash = await bcrypt.hash(password, saltRounds);
@@ -76,7 +77,6 @@ const register = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: 60 * 5 }
     );
-
     return res
       .status(201)
       .json({ msg: "Created SuccessFully", token, data: result });
