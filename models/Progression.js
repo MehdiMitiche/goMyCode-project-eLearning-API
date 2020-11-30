@@ -6,9 +6,9 @@ const progressionSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: "userId is required",
   },
-  progressionId: {
+  courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: "progressionID is  required",
+    required: "courseID is  required",
   },
   status: {
     type: Number,

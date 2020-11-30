@@ -19,7 +19,7 @@ const instructorSchema = new Schema({
   },
   password: {
     type: String,
-    required: "Email is required",
+    required: "Password is required",
   },
   address: {
     type: String,
